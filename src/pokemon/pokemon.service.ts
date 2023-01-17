@@ -84,4 +84,5 @@ export class PokemonService {
     // aca manejo cualquier otro error posible
     throw new InternalServerErrorException()
   }
+
 }
