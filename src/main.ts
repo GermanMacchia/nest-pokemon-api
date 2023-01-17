@@ -7,9 +7,15 @@ async function bootstrap () {
 
   app.setGlobalPrefix( 'api/v2' )
   app.useGlobalPipes(
+    //validaciones de la carga del cliente, acepta los atr que tiene el dto, rechaza lo que no tiene
     new ValidationPipe( {
       whitelist: true,
       forbidNonWhitelisted: true,
+      //transforma las peticiones en los atributos del dto
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     } )
   )
   await app.listen( 3000 )

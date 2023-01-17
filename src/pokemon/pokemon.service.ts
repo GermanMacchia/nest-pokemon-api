@@ -5,6 +5,7 @@ import { Model, isValidObjectId } from 'mongoose'
 import { Pokemon } from './entities/pokemon.entity'
 import { InjectModel } from '@nestjs/mongoose'
 import { BadRequestException, InternalServerErrorException, NotFoundException } from '@nestjs/common/exceptions'
+import { PaginationDto } from '../common/dto/pagination.dto'
 
 @Injectable()
 export class PokemonService {
@@ -26,8 +27,16 @@ export class PokemonService {
     }
   }
 
-  findAll () {
-    return this.pokemonModel.find( {} )
+  findAll ( queryParameter: PaginationDto ) {
+    const { limit = 10, offset = 0 } = queryParameter
+
+    return this.pokemonModel.find()
+      .limit( limit )
+      .skip( offset )
+      .sort( {
+        no: 1         //sort ascendente por numero
+      } )
+      .select( "-__v" ) //saco este atributo
   }
 
   async findOne ( term: string ) {
