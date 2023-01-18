@@ -2,6 +2,12 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
+## Deployed en Heroku
+```
+https://pokedex-ge.herokuapp.com/api/v2/pokemon
+```
+<br/>
+
 # Ejecutar en desarrollo
 
 1. Clonar el repositorio
@@ -33,7 +39,20 @@ npm run start:dev
 ```
 http://localhost:3000/api/v2/seed
 ```
+<br/>
+
 ## Stack utilizado
 * NestJs
-* MongoDB[aLink]
+* MongoDB
+
+<br/>
+
+## Notas
+
+Heroku redeploy sin cambios
+```
+git commit --allow-emoty -m "Trigger Heroku deploy"
+
+git push heroku <main|master>
+```
 
